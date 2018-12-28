@@ -5,6 +5,8 @@ import getters from './getters'
 import mutations from './mutations'
 import actions from './actions'
 
+import error_page from './module/error'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -13,4 +15,7 @@ export default new Vuex.Store({
   getters,
   mutations,
   actions,
+  modules: {
+    error_page
+  }
 })

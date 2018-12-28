@@ -13,21 +13,36 @@ const router: any = new Router({
   routes
 });
 
-let HAS_LOGIN: boolean = true;
+
 const LOGIN_PAGE_NAME = 'login';
 const HAS_NO_ACCESS = 'error_401';
 const MAIN_PAGE = 'home';
+let token: boolean = true;
+let userAccess: string = 'admin';
 //实现登陆鉴权
 
 router.beforeEach((to: any, from: any, next: any) => {
   iView.LoadingBar.start()
-	if(to.name !== 'login') {
-		if(HAS_LOGIN) next()
-		else next({ name: 'login' })
-	} else {
-		if(HAS_LOGIN) next({ name: 'home' })
-		else next()
-	}
+	if (!token && to.name !== LOGIN_PAGE_NAME) {
+    next({
+      name: LOGIN_PAGE_NAME
+    })
+  } else if (!token && to.name === LOGIN_PAGE_NAME) {
+    next()
+  } else if (token && to.name === LOGIN_PAGE_NAME) {
+    next({
+      name: MAIN_PAGE
+    })
+  } else {
+  	if(authorityControl(userAccess, to.meta.access)) {
+  		next()
+  	} else {
+  		next({
+	      replace: true,
+        name: HAS_NO_ACCESS
+      })
+    }
+  }
 })
 
 router.afterEach((to: any, from: any) => {
