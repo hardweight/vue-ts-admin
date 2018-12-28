@@ -20,6 +20,10 @@ export default class Home extends Vue {
   @Action doSomeThing: any
   @Action doOtherThing: any
 
+  test = async () => {
+    const res = await test('zzz')
+    console.log(res)
+  }
   beforeCreate() {
     console.log('www')
   }

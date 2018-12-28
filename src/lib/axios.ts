@@ -1,6 +1,7 @@
 import axios from 'axios'
 const { baseURL } = require('@/config')
 
+//封装axios,对全局状态控制进行一些操作
 class HttpRequest {
 	baseUrl: any;
 	queue: any;
