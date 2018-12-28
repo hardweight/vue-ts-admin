@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-    
+  <transition name='fade'>
     <router-view/>
-  </div>
+  </transition>
 </template>
 
 <style lang="less">
