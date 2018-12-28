@@ -6,6 +6,6 @@
  2.npm install
  3.npm run serve
 
-## 这个项目旨在提供一套vue+typescript的后台管理解决方案,欢迎fork
+这个项目旨在提供一套vue+typescript的后台管理解决方案,欢迎fork
 
-## 不定期更新，不会断更
+<strong>不定期更新，不会断更</strong>
