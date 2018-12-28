@@ -28,6 +28,7 @@ export default class Home extends Vue {
     console.log('www')
   }
   mounted() {
+    this.test()
     this.doSomeThing()
     this.doOtherThing()
   }
