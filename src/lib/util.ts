@@ -3,7 +3,7 @@ import config from '@/config';
 
 export const TOKEN_KEY = 'token'
 
-export const setToken = (token: any) => {
+export const setToken = (token: any): void => {
   Cookies.set(TOKEN_KEY, token, {
     expires: config.cookieExpires || 1
   })
@@ -15,7 +15,7 @@ export const getToken = () => {
   else return false
 }
 
-export const authorityControl = (jurisdiction: any, access: any) => {
+export const authorityControl = (jurisdiction: any, access: any): boolean => {
   if(access) {
     if(access.indexOf(jurisdiction) === -1) return false
     else return true
