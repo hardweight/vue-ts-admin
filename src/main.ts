@@ -3,7 +3,6 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import iView from 'iview';
-import 'iview/dist/styles/iview.css';
 
 Vue.config.productionTip = false;
 
@@ -14,3 +13,9 @@ new Vue({
   store,
   render: (h) => h(App),
 }).$mount('#app');
+
+if(store.state.theme === 'dark') {
+  require('@/theme/dark.less')
+}else if(store.state.theme === 'light') {
+  require('@/theme/light.less')
+}

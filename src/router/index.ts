@@ -17,7 +17,7 @@ const router: any = new Router({
 const LOGIN_PAGE_NAME = 'login';
 const HAS_NO_ACCESS = 'error_401';
 const MAIN_PAGE = 'home';
-let token: boolean = true;
+let token: boolean = false;
 let userAccess: string = 'admin';
 //实现登陆鉴权
 
