@@ -1,11 +1,12 @@
 # vue-ts-admin
-一个基于vuecli@3.0和typescript的架构
+一个基于vuecli@3.0和typescript的后台管理系统解决方案
 
 ## 使用流程
-> 1.clone我的项目或者下载压缩包
-> 2.npm install
-> 3.npm run serve
+> + clone我的项目或者下载压缩包
+> + npm install
+> + npm run serve
 
-这个项目旨在提供一套vue+typescript的后台管理解决方案,包括一些常用的功能,欢迎fork
+欢迎fork和提出建议
+<p>作者邮箱: liangzhipipi@163.com</p>
 
 <strong>不定期更新，不会断更</strong>
