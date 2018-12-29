@@ -14,6 +14,7 @@ new Vue({
   render: (h) => h(App),
 }).$mount('#app');
 
+//不要问我为什么这个逻辑写在实例化后面(微笑/微笑)
 if(store.state.theme === 'dark') {
   require('@/theme/dark.less')
 }else if(store.state.theme === 'light') {
