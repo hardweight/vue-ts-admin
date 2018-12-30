@@ -3,13 +3,12 @@ import Router from 'vue-router';
 import routes from './router'; 
 import store from '@/store'
 import iView from 'iview';
-import { authorityControl } from './../lib/util';
+import { authorityControl } from '@/lib/util';
 
 Vue.use(Router);
 
-const router: any = new Router({
+const router = new Router({
   mode: 'history',
-  base: process.env.BASE_URL,
   routes
 });
 
@@ -17,11 +16,12 @@ const router: any = new Router({
 const LOGIN_PAGE_NAME = 'login';
 const HAS_NO_ACCESS = 'error_401';
 const MAIN_PAGE = 'home';
-let token: boolean = false;
-let userAccess: string = 'admin';
-//实现登陆鉴权
 
+//实现登陆鉴权
 router.beforeEach((to: any, from: any, next: any) => {
+  let token: boolean = false;
+  localStorage.getItem('hasLogin') === 'true' ? token = true : token = false
+  let userAccess: any = localStorage.getItem('access') ? localStorage.getItem('access') : '';
   iView.LoadingBar.start()
 	if (!token && to.name !== LOGIN_PAGE_NAME) {
     next({
@@ -33,14 +33,11 @@ router.beforeEach((to: any, from: any, next: any) => {
     next({
       name: MAIN_PAGE
     })
-  } else {
+  } else if(token && to.name !== LOGIN_PAGE_NAME) {
   	if(authorityControl(userAccess, to.meta.access)) {
   		next()
   	} else {
-  		next({
-	      replace: true,
-        name: HAS_NO_ACCESS
-      })
+  		next('/401')
     }
   }
 })

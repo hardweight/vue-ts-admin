@@ -17,21 +17,23 @@ module.exports = {
       .set('_c', resolve('src/components'))
   },
   productionSourceMap: false,
-  // 这里写你调用接口的基础路径，来解决跨域，如果设置了代理，那你本地开发环境的axios的baseUrl要写为 '' ，即空字符串
+  // 本地代理实现测试时跨域。
+  // 目前我的跨越解决方案是使用nginx做反向代理，你们可以扔给运维做这件事。
   devServer: {
-    proxy: {
-      '/api': {
-        target: 'http://www.weather.com.cn/data/sk/',
-        changeOrigin: true,
-        ws: false,
-        pathRewrite: {
-          '^/api': '/'
-        }
-      }
-    }
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://www.weather.com.cn/data/sk/',
+    //     changeOrigin: true,
+    //     ws: false,
+    //     pathRewrite: {
+    //       '^/api': '/'
+    //     }
+    //   }
+    // }
   },
   css: {
-    loaderOptions: { // 向 CSS 相关的 loader 传递选项
+    loaderOptions: { 
+      //向CSS相关的loader传递选项,否则你别指望好好用less- -
       less: {
         javascriptEnabled: true
       }

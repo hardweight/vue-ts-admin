@@ -11,13 +11,13 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/views/Home.vue'),
+    component: () => import('@/views/home.vue'),
   },
   {
     path: '/about',
     name: 'about',
     meta: {
-      access: ['zz']
+      access: ['admin']
     },
     component: () => import('@/views/About.vue'),
   },
