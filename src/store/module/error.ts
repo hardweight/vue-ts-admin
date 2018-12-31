@@ -1,9 +1,6 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
-export default new Vuex.Store({
+//import router from '@/router'
+export default {
+  namespaced: true,
   strict: process.env.NODE_ENV === 'development',
   state: {
 
@@ -12,14 +9,14 @@ export default new Vuex.Store({
 
   },
   mutations: {
+    
+  },
+  actions: {
     goBack(): any {
       window.history.go(-1)
     },
-    goHome() {
-
+    goHome(state: any, r: any) {
+      r.push('/')
     }
-  },
-  actions: {
-
   }
-})
+}

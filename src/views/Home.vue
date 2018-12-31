@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <Button @click="logout">tuichu</Button>
+    <s_sider></s_sider>
+    <Button @click="logout" type="primary">推出登陆</Button>
+    <Button @click='changeTheme'>切换主题</Button>
   </div>
 </template>
 
@@ -8,7 +10,12 @@
 import { Component, Vue } from 'vue-property-decorator'; // @ is an alias to /src
 import { test } from '@/api/test';
 import { Action } from 'vuex-class';
-@Component
+import sider from '_c/sider/sider.vue';
+@Component({
+  components: {
+    's_sider': sider
+  }
+})
 export default class Home extends Vue {
   @Action doSomeThing: any
   @Action doOtherThing: any
@@ -19,6 +26,13 @@ export default class Home extends Vue {
     window.localStorage.setItem('hasLogin', 'false')
     window.localStorage.setItem('access', '')
     this.$router.push('/login')
+  }
+  changeTheme() {
+    if(this.$store.state.theme === 'light') {
+      this.$store.commit('handleChangeTheme', 'dark')
+    } else {
+      this.$store.commit('handleChangeTheme', 'light')
+    }
   }
   mounted() {
   }
