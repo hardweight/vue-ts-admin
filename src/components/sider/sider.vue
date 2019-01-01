@@ -27,6 +27,7 @@ export default class sider extends Vue {
           list.splice(i,1);
           i --;
         } else {}
+        //这里一定要是null, 因为在util的方法中只判断access是否存在,空数组也是一个Object
         let access: any = o.access ? o.access : null
         if(authorityControl(userAccess, access) === false) {
           list.splice(i,1);
@@ -42,7 +43,6 @@ export default class sider extends Vue {
     return list
   }
   mounted() {
-    console.log(this.siderList)
   }
 }
 </script>
