@@ -50,7 +50,7 @@ export default class login extends Vue {
 			//const res = await handleLogin(this.userName, this.password)
 			//console.log(res)
 			//这里拿到后台返回的token和登陆权限级别
-			this.setUserToken({ hasLogin: 'true', access: 'admin' })
+			await this.setUserToken({ hasLogin: 'true', access: 'admin' })
 			this.$router.push('/')
 		} catch(err) {
 			console.log(err)

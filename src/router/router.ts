@@ -12,7 +12,8 @@ const routes = [
     path: '/',
     name: 'home',
     meta: {
-      hideInMenu: true
+      hideInMenu: true,
+      access: ['admin']
     },
     component: () => import('@/views/home.vue'),
   },

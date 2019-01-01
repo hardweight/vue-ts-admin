@@ -11,15 +11,17 @@
 </template>
 
 <script lang='ts'>
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import r from '@/router/router.ts'
 import { authorityControl } from '@/lib/util';
 @Component
 export default class sider extends Vue {
-  siderTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light'
+  access: any = null;
+  userAccess: any = localStorage.getItem('access') ? localStorage.getItem('access') : '';
+  siderTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light';
   get siderList() {
-    let list: any = r;
-    let userAccess: any = localStorage.getItem('access') ? localStorage.getItem('access') : '';
+    //这里必须把list克隆一份, 否则会修改掉r, 从而导致路由列表计算属性返回异常
+    let list: any = r.slice();
     for(let i: any = 0; i < list.length; i ++){
       if(list[i].meta){
         let o = list[i].meta
@@ -28,8 +30,8 @@ export default class sider extends Vue {
           i --;
         } else {}
         //这里一定要是null, 因为在util的方法中只判断access是否存在,空数组也是一个Object
-        let access: any = o.access ? o.access : null
-        if(authorityControl(userAccess, access) === false) {
+        this.access = o.access ? o.access : null
+        if(authorityControl(this.userAccess, this.access) === false) {
           list.splice(i,1);
           i --;
         } else {}
@@ -42,7 +44,8 @@ export default class sider extends Vue {
     }
     return list
   }
-  mounted() {
+  created() {
+    console.log(this.siderList)
   }
 }
 </script>
