@@ -11,14 +11,17 @@
 </template>
 
 <script lang='ts'>
-import { Component, Vue, Watch } from 'vue-property-decorator'
-import r from '@/router/router.ts'
+import { Component, Vue, Watch } from 'vue-property-decorator';
+import r from '@/router/router.ts';
 import { authorityControl } from '@/lib/util';
 @Component
 export default class sider extends Vue {
   access: any = null;
   userAccess: any = localStorage.getItem('access') ? localStorage.getItem('access') : '';
   siderTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light';
+  /**
+   * 路由列表过滤
+   */
   get siderList() {
     //这里必须把list克隆一份, 否则会修改掉r, 从而导致路由列表计算属性返回异常
     let list: any = r.slice();
