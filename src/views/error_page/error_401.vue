@@ -19,7 +19,7 @@ export default class error_401 extends Vue {
   @errorModule.Action goBack: any
   @errorModule.Action goHome: any
   handleGoHome() {
-    this.$store.dispatch('error_page/goHome', this.$router)
+    this.goHome(this.$router)
   }
 }
 </script>
