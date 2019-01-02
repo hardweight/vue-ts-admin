@@ -20,6 +20,7 @@ module.exports = {
   // 本地代理实现测试时跨域。
   // 目前我的跨越解决方案是使用nginx做反向代理，你们可以扔给运维做这件事。
   devServer: {
+    disableHostCheck: true, //  新增该配置项
     // proxy: {
     //   '/api': {
     //     target: 'http://www.weather.com.cn/data/sk/',

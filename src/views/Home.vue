@@ -35,6 +35,8 @@ export default class Home extends Vue {
     }
   }
   mounted() {
+    console.log(this.$store.state.user)
+    console.log(this.$store.state.username)
   }
 }
 </script>
